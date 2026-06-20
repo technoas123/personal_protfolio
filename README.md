@@ -49,17 +49,61 @@ supports contact and networking links as well as resume download.
 
 ## Technology Stack
 
-the following are used:
-### Frontend:
-p - React,
-javascript (ES6+),
-html5,
-css3,
-vite.
-the design uses responsive layouts, CSS animations, glassmorphism effects, modern dark themes.
-the project structure is shown below:
-bash code block with directory tree.
-details of featured projects like SDR Receiver Chain development focusing on synchronization etc., ResQBot AI disaster response rover integrating computer vision etc., Rotating Shaft Digital Twin industry4.0 framework for predictive maintenance.
-and about me section detailing interests in wireless communications etc.
-deployment instructions including npm commands for dev build and production build.
-details on how to connect via LinkedIn,Github,email. the site is designed by Ahammed Salahuddeen N Y.
+### Frontend
+
+-   React
+-   JavaScript (ES6+)
+-   HTML5
+-   CSS3
+-   Vite
+
+### Design & UI
+
+-   Responsive Layouts
+-   CSS Animations
+-   Glassmorphism Effects
+-   Modern Dark Theme
+
+## Project Structure
+
+    src/
+    ├── components/
+    │   ├── Hero.jsx
+    │   ├── About.jsx
+    │   ├── Skills.jsx
+    │   ├── Projects.jsx
+    │   ├── ProjectModal.jsx
+    │   ├── Experience.jsx
+    │   ├── Achievements.jsx
+    │   ├── Contact.jsx
+    │   ├── Footer.jsx
+    │   └── Navbar.jsx
+    │
+    ├── data/
+    │   └── portfolioData.js
+    │
+    ├── hooks/
+    │   └── useTheme.js
+    │
+    └── App.jsx
+
+## About Me
+
+Electronics and Communication Engineering graduate with interests in:
+
+-   Wireless Communications
+-   Signal Processing
+-   Software Defined Radio (SDR)
+-   Embedded Systems
+-   MATLAB Algorithm Development
+-   Software Engineering
+
+  
+
+  
+
+Available for opportunities in Wireless Communications, Signal Processing, Embedded Systems, and Software Engineering.
+
+* * *
+
+Designed and developed by Ahammed Salahuddeen N Y.
