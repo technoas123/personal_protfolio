@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useTheme } from "./hooks/useTheme";
+
 import ScrollProgress from "./components/ScrollProgress";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -15,6 +16,27 @@ import Footer from "./components/Footer";
 export default function App() {
   const { theme, toggleTheme } = useTheme();
 
+  // Always start at the top on refresh
+  useEffect(() => {
+    window.history.scrollRestoration = "manual";
+
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "instant",
+    });
+
+    // Remove any URL hash like #contact
+    if (window.location.hash) {
+      history.replaceState(
+        null,
+        "",
+        window.location.pathname
+      );
+    }
+  }, []);
+
+  // Reveal animations
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -24,13 +46,18 @@ export default function App() {
           }
         });
       },
-      { threshold: 0.1 }
+      {
+        threshold: 0.1,
+      }
     );
 
-    // Small delay so components are mounted
     const timer = setTimeout(() => {
-      const els = document.querySelectorAll(".reveal");
-      els.forEach((el) => observer.observe(el));
+      const els =
+        document.querySelectorAll(".reveal");
+
+      els.forEach((el) =>
+        observer.observe(el)
+      );
     }, 100);
 
     return () => {
@@ -48,23 +75,34 @@ export default function App() {
         <div className="orb-2 ambient-orb" />
         <div className="orb-3 ambient-orb" />
       </div>
+
       <div className="bg-grid" />
 
-      <Navbar theme={theme} toggleTheme={toggleTheme} />
+      <Navbar
+        theme={theme}
+        toggleTheme={toggleTheme}
+      />
 
       <main>
         <Hero theme={theme} />
+
         <WaveformStrip />
+
         <div className="divider" />
         <About />
+
         <div className="divider" />
         <Skills />
+
         <div className="divider" />
         <Projects />
+
         <div className="divider" />
         <Experience />
+
         <div className="divider" />
         <Achievements />
+
         <Contact />
       </main>
 

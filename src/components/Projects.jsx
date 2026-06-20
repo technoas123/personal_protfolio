@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { projectsData } from "../data/portfolioData";
-import { GithubIcon } from "./Icons";
+import ProjectModal from "./ProjectModal";
 
 const wavePoints = [
   "0,30 30,10 60,50 90,5 120,45 150,20 180,40 210,15 240,35 270,10 300,45 330,20 360,38 400,30",
@@ -7,13 +8,14 @@ const wavePoints = [
   "0,30 25,20 50,40 75,15 100,35 125,25 150,42 175,18 200,32 225,22 250,38 275,20 300,35 325,25 350,40 375,22 400,30",
 ];
 
-function ProjectCard({ project, index }) {
+function ProjectCard({ project, index, onOpen }) {
   return (
     <div className={`project-card reveal reveal-delay-${index}`}>
       <div className={`project-visual ${project.pvClass}`}>
         {project.featured && (
           <span className="featured-badge">Featured</span>
         )}
+
         <svg
           className="pv-wave"
           viewBox="0 0 400 60"
@@ -26,7 +28,14 @@ function ProjectCard({ project, index }) {
             strokeWidth="2"
           />
         </svg>
-        <div style={{ textAlign: "center", position: "relative", zIndex: 1 }}>
+
+        <div
+          style={{
+            textAlign: "center",
+            position: "relative",
+            zIndex: 1,
+          }}
+        >
           <div className="pv-icon">{project.icon}</div>
           <div className="pv-label">{project.pvLabel}</div>
         </div>
@@ -34,8 +43,15 @@ function ProjectCard({ project, index }) {
 
       <div className="project-body">
         <div className="project-tag">{project.tag}</div>
-        <div className="project-title">{project.title}</div>
-        <div className="project-desc">{project.desc}</div>
+
+        <div className="project-title">
+          {project.title}
+        </div>
+
+        <div className="project-desc">
+          {project.desc}
+        </div>
+
         <div className="project-tech">
           {project.tech.map((t) => (
             <span key={t} className="tech-badge">
@@ -43,10 +59,14 @@ function ProjectCard({ project, index }) {
             </span>
           ))}
         </div>
+
         <div className="project-footer">
-          <a href={project.demo} className="btn-ghost">
+          <button
+            className="btn-ghost"
+            onClick={() => onOpen(project)}
+          >
             {project.demoLabel}
-          </a>
+          </button>
         </div>
       </div>
     </div>
@@ -54,17 +74,36 @@ function ProjectCard({ project, index }) {
 }
 
 export default function Projects() {
+  const [selectedProject, setSelectedProject] =
+    useState(null);
+
   return (
     <section id="projects">
       <div className="section-inner">
-        <div className="section-label reveal">Projects</div>
-        <h2 className="section-title reveal">Selected work.</h2>
+        <div className="section-label reveal">
+          Projects
+        </div>
+
+        <h2 className="section-title reveal">
+          Selected work.
+        </h2>
+
         <div className="projects-grid">
           {projectsData.map((project, i) => (
-            <ProjectCard key={project.title} project={project} index={i} />
+            <ProjectCard
+              key={project.title}
+              project={project}
+              index={i}
+              onOpen={setSelectedProject}
+            />
           ))}
         </div>
       </div>
+
+      <ProjectModal
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
     </section>
   );
 }
