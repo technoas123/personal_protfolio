@@ -28,16 +28,7 @@ The website highlights my work in:
 
 ### Project Showcase
 
-detailed project cards with interactive overview modals featuring:
-  
-- SDR Receiver Chain  
-- ResQBot (AI Disaster Response Rover)  
-- Rotating Shaft Digital Twin  
-- Learning Dashboard (MERN)  
-- Crypto-Lib  
-- Wearable Device for Dementia Patients  
-  
-each project includes:
+detailed project cards with interactive overview modals featuring the projects I built with each project section including:
   
 * Project overview  
 * Technical contributions  
