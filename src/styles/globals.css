@@ -1154,3 +1154,31 @@ footer { padding:1.75rem 2rem; background:var(--bg); border-top:1px solid var(--
     padding: 1.5rem;
   }
 }
+
+
+/* Mobile Footer */
+@media (max-width: 768px) {
+
+  footer {
+    padding: 1.5rem 1rem;
+    text-align: center;
+    width: 100%;
+    display: block;
+    position: relative;
+    z-index: 10;
+  }
+
+  .footer-text {
+    font-size: 0.75rem;
+    line-height: 1.6;
+    word-break: break-word;
+  }
+
+  .footer-tagline {
+    display: block;
+    margin-top: 0.4rem;
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+
+}
